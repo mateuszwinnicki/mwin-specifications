@@ -2,7 +2,6 @@ package pl.mateuszwinnicki.specification.sort.order;
 
 import java.util.Optional;
 
-import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.domain.Sort.Order;
 
@@ -29,10 +28,15 @@ public class OrderBy implements SortOrder {
 	}
 	
 	private Direction direction() {
-		return Sort.Direction.fromString(
-			Optional.ofNullable(sortDirection)
-			.orElse(Sort.Direction.ASC.toString())
-		);
+		try {
+			return Direction.fromString(
+				Optional.ofNullable(sortDirection).orElseThrow(
+					() -> new IllegalArgumentException()
+				).toUpperCase()
+			);
+		} catch (final IllegalArgumentException e) {
+			return Direction.ASC;
+		}
 	}
 	
 	private String sortProperty() {

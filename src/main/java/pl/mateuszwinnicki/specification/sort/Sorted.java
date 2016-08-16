@@ -28,8 +28,5 @@ public class Sorted implements SortedBy {
 			.collect(Collectors.toList())
 		);
 	}
-
-	
-	
 	
 }

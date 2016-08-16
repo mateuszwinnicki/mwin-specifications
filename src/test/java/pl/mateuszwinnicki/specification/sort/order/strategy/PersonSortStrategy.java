@@ -1,9 +1,7 @@
-# mwin-specifications
-OOP way for creating good object to working with JpaSpecificationExecutor. You can use this classes if you are using REST interface with query properties (which can be null). 
+package pl.mateuszwinnicki.specification.sort.order.strategy;
 
-Example class implementing SortBy interface:
+import pl.mateuszwinnicki.specification.sort.strategy.SortByStrategy;
 
-```
 public class PersonSortStrategy implements SortByStrategy {
 
     private enum PersonSortBy {
@@ -38,5 +36,3 @@ public class PersonSortStrategy implements SortByStrategy {
     }
 
 }
-
-```
